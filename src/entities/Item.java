@@ -17,4 +17,9 @@ public class Item {
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
+
+    @Override
+    public String toString() {
+        return "- " + itemName + "%n".formatted();
+    }
 }

@@ -12,7 +12,6 @@ public class Main {
     System.out.println("How many characters will be created?");
     System.out.print("=> ");
     int n = sc.nextInt();
-    System.out.println();
 
     SheetKeeper sheetKeeper = new SheetKeeper();
     Sheet sheet = new Sheet();
@@ -20,6 +19,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             System.out.println("Create the character " + (i+1) + ":");
             System.out.println();
+            sc.nextLine();
             System.out.print("Name: ");
             String charName = sc.nextLine();
             System.out.print("Race: ");
@@ -32,29 +32,35 @@ public class Main {
             double charMana = sc.nextDouble();
 
             Item item = new Item();
-            System.out.println("Want to add items in char " + (i+1) + "inventory?");
-            System.out.print("0 -> No || 1 -> Yes");
+            Inventory inventory = new Inventory(charMoney);
+            System.out.println("Want to add items in char " + (i+1) + " inventory?");
+            System.out.println("0 -> No | 1 -> Yes");
+            System.out.print("=> ");
             int hasItems = sc.nextInt();
                if(hasItems == 1){
                    int adding = 1;
                    while(adding == 1){
                        System.out.println();
+                       sc.nextLine();
                        System.out.print("Enter the item name: ");
                        String addedItem = sc.nextLine();
                        item = new Item(addedItem);
-                       System.out.println(adding + " added with success!");
+                       inventory.addItem(item);
+                       System.out.println(addedItem + " added with success!");
                        System.out.println("Want to add more items?");
-                       System.out.print("0 -> No || 1 -> Yes");
+                       System.out.println("0 -> No | 1 -> Yes");
+                       System.out.print("=> ");
                        adding = sc.nextInt();
                    }
                }
 
-               Inventory inventory = new Inventory(item, charMoney);
                Attributes attributes = new Attributes(charLife, charMana);
                Character character = new Character(charName, charRace, attributes, inventory);
                sheet.addChar(i, character);
+               sheetKeeper.addSheet(i, sheet);
+
         }
 
-
+            System.out.println(sheetKeeper);
     }
 }

@@ -1,10 +1,13 @@
 package entities;
 
+import entities.enums.CharacterStatus;
+
 public class Character {
     private String name;
     private String race;
     private Attributes attributes;
     private Inventory inventory;
+    private CharacterStatus charStatus;
 
     public Character() {
     }
@@ -46,5 +49,15 @@ public class Character {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "%n".formatted()
+                + "Race: " + race + "%n".formatted()
+                + "Life: " + getAttributes().getLife() + "%n".formatted()
+                + "Mana: " + getAttributes().getMana() + "%n".formatted()
+                + "%n".formatted()
+                + "Inventory: " + "%n".formatted() + getInventory() + "%n".formatted();
     }
 }

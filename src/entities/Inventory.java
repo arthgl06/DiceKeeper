@@ -49,4 +49,13 @@ public class Inventory {
         itemList.remove(item);
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Balance: " + "%.2f".formatted(getMoney()) + "\n");
+        sb.append("Items: " + "\n");
+        for (Item item : itemList) {
+            sb.append(item);
+        }
+        return sb.toString();
+    }
 }

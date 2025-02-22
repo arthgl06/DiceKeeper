@@ -10,8 +10,7 @@ public class Sheet {
 
     public Sheet() {}
 
-    public Sheet(Character character, LocalDate momentum) {
-        this.character = character;
+    public Sheet(LocalDate momentum) {
         this.momentum = momentum;
     }
 
@@ -43,5 +42,15 @@ public class Sheet {
 
     public void setMomentum(LocalDate momentum) {
         this.momentum = momentum;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Character chars : characterList) {
+            sb.append("\n" + chars + "\n");
+        }
+
+        return sb.toString();
     }
 }
